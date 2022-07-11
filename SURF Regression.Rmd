@@ -105,4 +105,4 @@ for (j in 1:ncol(age.fit$coefficients)) {
 plot(age.fit)
 ```
 # ML Discriminant/Categorical Methods
-
+to be written
