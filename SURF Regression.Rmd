@@ -46,7 +46,7 @@ age_dependency <- LP_PLUS_DEMOGRAPHICS$age.dependency.ratio
 child_dependency <- na.omit(LP_PLUS_DEMOGRAPHICS$child.dependency.ratio)
 ```
 
-# Histograms of All Variables
+# Histograms of All Variables with fitted kernel density estimations
 ```{r}
 hist(LP, prob=TRUE)
 lines(bkde(LP), lwd=2)
