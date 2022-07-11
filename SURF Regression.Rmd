@@ -1,0 +1,108 @@
+---
+title: "SURF LP Regression"
+author: "Kevin Ren"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+```{r}
+library(car)
+library(KernSmooth)
+library(quantreg)
+library("ggplot2")
+require(ggiraph)
+require(ggiraphExtra)
+require(plyr)
+LP_PLUS_DEMOGRAPHICS <- read.csv("Downloads/lp_renamed.csv", header=TRUE, stringsAsFactors=FALSE)
+```
+
+# Generate Correlation Matrix
+
+```{r}
+cor_matrix_spearman <- cor(LP_PLUS_DEMOGRAPHICS$LP.VAL, subset(LP_PLUS_DEMOGRAPHICS, select =-census.tract.fips.code), use="complete.obs",method = "spearman")
+round(cor_matrix_spearman, 2)
+
+cor_matrix_pearson <- cor(LP_PLUS_DEMOGRAPHICS$LP.VAL, subset(LP_PLUS_DEMOGRAPHICS, select =-census.tract.fips.code), use="complete.obs",method = "pearson")
+round(cor_matrix_pearson, 2)
+```
+
+# Pairs Plots
+```{r}
+just_nums <- subset(LP_PLUS_DEMOGRAPHICS, select =-census.tract.fips.code)
+high_cor_vars <- subset(LP_PLUS_DEMOGRAPHICS, select=c(LP.VAL, percent.family.households, median.age, age.dependency.ratio, child.dependency.ratio))
+pairs(high_cor_vars)
+```
+
+
+# Rename Variables
+```{r}
+LP <- LP_PLUS_DEMOGRAPHICS$LP.VAL
+age <- LP_PLUS_DEMOGRAPHICS$median.age
+families <- LP_PLUS_DEMOGRAPHICS$percent.family.households
+age_dependency <- LP_PLUS_DEMOGRAPHICS$age.dependency.ratio
+child_dependency <- na.omit(LP_PLUS_DEMOGRAPHICS$child.dependency.ratio)
+```
+
+# Histograms of All Variables
+```{r}
+hist(LP, prob=TRUE)
+lines(bkde(LP), lwd=2)
+
+hist(age, prob=TRUE)
+lines(bkde(age), lwd=2)
+
+hist(families, prob=TRUE)
+lines(bkde(families), lwd=2)
+
+hist(age_dependency, prob=TRUE)
+lines(bkde(age_dependency), lwd=2)
+
+hist(child_dependency, prob=TRUE)
+lines(bkde(child_dependency), lwd=2)
+```
+
+# Transforming SNAP percent and retesting correlation
+```{r}
+LP_PLUS_DEMOGRAPHICS$transformed_SNAP <- (exp(LP_PLUS_DEMOGRAPHICS$percent.snap.public.assistance))/(100000000)
+hist(LP_PLUS_DEMOGRAPHICS$transformed_SNAP)
+retest_snap <- cor(LP_PLUS_DEMOGRAPHICS$LP.VAL, LP_PLUS_DEMOGRAPHICS$transformed_SNAP, use="complete.obs", method="spearman")
+round(retest_snap, 2)
+```
+
+
+# Build/present linear regression predicting LP; Visual of LP predicted by Age
+```{r}
+age_model <- lm(LP.VAL ~median.age, data=LP_PLUS_DEMOGRAPHICS)
+summary(age_model)
+
+plot(LP.VAL~median.age , data=LP_PLUS_DEMOGRAPHICS, ylim = rev(range(LP)) ,
+     bty="n" , xlab = "Median Age in years", ylab="Light Pollution Values")
+title("Scatter Plot of Light Pollution v. Age") 
+abline(age_model,col='red')
+
+plot(age_model)
+ggPredict(age_model,se=TRUE,interactive=TRUE)
+```
+
+# Quantile Regression
+
+```{r}
+age.fit <- rq(LP.VAL ~ median.age, data=LP_PLUS_DEMOGRAPHICS, tau = seq(0, 1, by = 0.1))
+summary(age.fit)
+```
+
+## plotting different quantiles
+```{r}
+colors <- c("#ffe6e6", "#ffcccc", "#ff9999", "#ff6666", "#ff3333",
+            "#ff0000", "#cc0000", "#b30000", "#800000", "#4d0000", "#000000")
+plot(LP.VAL ~ median.age, data = LP_PLUS_DEMOGRAPHICS, pch = 16, main = "Quantile Regression of LP v. Age")
+for (j in 1:ncol(age.fit$coefficients)) {
+    abline(coef(age.fit)[, j], col = colors[j])
+}
+plot(age.fit)
+```
+# ML Discriminant/Categorical Methods
+
