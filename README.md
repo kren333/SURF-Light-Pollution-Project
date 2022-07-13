@@ -5,5 +5,5 @@ My research, advised by Diane Turnshek, aims to 1) take light pollution data fro
 
 Another aspect of this project has been mapping and analyzing LP data in ArcGIS Pro. Some interesting maps are replicated below:
 
-<iframe src="https://drive.google.com/file/d/1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd/preview" width="640" height="480" allow="autoplay"></iframe>
+![Raw Data](https://drive.google.com/file/d/1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd/view?usp=sharing)
 <sub>All Raw data</sub>
