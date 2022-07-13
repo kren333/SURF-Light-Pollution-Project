@@ -17,5 +17,5 @@ Another aspect of this project has been mapping and analyzing LP data in ArcGIS 
 
 <sub>*TIN surface estimating LP across the city*</sub>
 
-<img src="https://drive.google.com/uc?export=view&id=1_edvx5vthBcwciw8BGIoe5vDXRMYszoQ" width="500">
+<img src="https://drive.google.com/uc?export=view&id=11yGYEsKg6bB5Nv69xqXDTsTg0QPIssjD" width="500">
 
