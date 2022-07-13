@@ -11,7 +11,7 @@ Another aspect of this project has been mapping and analyzing LP data in ArcGIS 
 
 <img src="https://drive.google.com/uc?export=view&id=1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd" width="500">
 
-<sub>Hot Spot Analysis</sub>
+<sub>Hot Spot Analysis (zones of 90%+ confidence of being 'hot' or 'cold' sites of light pollution)</sub>
 
 <img src="https://drive.google.com/uc?export=view&id=1JQ3xBtdsEgUpA0uOIP1-08-KrPvlvG5L" width="500">
 
