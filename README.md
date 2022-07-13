@@ -7,14 +7,17 @@ Another aspect of this project has been mapping and analyzing LP data in ArcGIS 
 
 <hr>
 
+<sub>All Raw data</sub>
+
 <img src="https://drive.google.com/uc?export=view&id=1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd" width="500">
 
-<sub>All Raw data</sub>
+<sub>Hot Spot Analysis</sub>
 
 <img src="https://drive.google.com/uc?export=view&id=1LXJGGwqYEKkuKFZRjWny7lcJjCWEttwM" width="500">
 
 <sub>Hot Spot Analysis</sub>
 
+<sub>TIN surface estimating LP across the city</sub>
+
 <img src="https://drive.google.com/uc?export=view&id=1_edvx5vthBcwciw8BGIoe5vDXRMYszoQ" width="500">
 
-<sub>TIN surface estimating LP across the city</sub>
