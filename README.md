@@ -7,6 +7,6 @@ Another aspect of this project has been mapping and analyzing LP data in ArcGIS 
 
 ![Raw Data](https://drive.google.com/uc?export=view&id=1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd) <br />
 
-<img src="https://drive.google.com/uc?export=view&id=1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd" width="48">
+<img src="https://drive.google.com/uc?export=view&id=1DRcuVzcIDF54MbD7n-oodU3E_9dtNLkd" width="150">
 
 <sub>All Raw data</sub>
