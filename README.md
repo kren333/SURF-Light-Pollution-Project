@@ -13,7 +13,7 @@ Another aspect of this project has been mapping and analyzing LP data in ArcGIS 
 
 <sub>Hot Spot Analysis</sub>
 
-<img src="https://drive.google.com/uc?export=view&id=1LXJGGwqYEKkuKFZRjWny7lcJjCWEttwM" width="500">
+<img src="https://drive.google.com/uc?export=view&id=1JQ3xBtdsEgUpA0uOIP1-08-KrPvlvG5L" width="500">
 
 <sub>TIN surface estimating LP across the city</sub>
 
